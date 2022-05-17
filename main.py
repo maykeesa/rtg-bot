@@ -44,4 +44,4 @@ async def registerTeam(message, jogadores):
     for i in timeB:
         await message.channel.send(f"** {i} **")
 
-bot.run('OTc1OTQ3MDcyNDg4NDg0OTI2.Gb9ZeN.5hY-s0g-TyjxedTjtWOj9Lz7ATK3Cojc3BaK0M')
+bot.run('')
