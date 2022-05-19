@@ -9,7 +9,7 @@ Comando `!registrarTime`
 
 ![image](https://cdn.discordapp.com/attachments/975993751455559680/976189072152358912/rounded-in-photoretrica_3.png)
 
-* <h2> Obejtivos: </h2>
+* <h2> Objetivos: </h2>
 * Adicionar players através de reação
 * Inserir imagens
 * Aleatorizar as frases
