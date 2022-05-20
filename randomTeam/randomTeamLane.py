@@ -1,7 +1,7 @@
 from random import choice
 
 def select_team_lane(players):
-  lanes = ('TOP', 'JG', 'MID', 'ADC', 'SUP')
+  lanes = ('<:toplane:977045895394783232>', '<:jglane:977045966026842134>', '<:midlane:977046034079424549>', '<:adclane:977046079616983080>', '<:suplane:977046147485020170>')
   timeA = {}
   timeB = {}
   i, j = 0, 0
