@@ -11,6 +11,5 @@ Comando `?registrarTime`
 
 * <h2> Objetivos: </h2>
 * Adicionar players através de reação
-* Inserir imagens
-* Aleatorizar as frases
 * Não repetir lanes
+* Salvar estatísticas em banco de dados
