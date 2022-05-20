@@ -4,7 +4,7 @@ from discord.ext import commands
 import randomTeam.randomTeam as rt
 import randomTeam.randomTeamLane as rtl
 
-bot = commands.Bot("?")
+bot = commands.Bot("$")
 
 #Bot inicialização
 @bot.event

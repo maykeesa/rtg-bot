@@ -3,13 +3,13 @@
 
 Comando `?registrarTimeLane`
 
-![image](https://cdn.discordapp.com/attachments/975993751455559680/976188465521770557/rounded-in-photoretrica_2.png)
+![image](https://cdn.discordapp.com/attachments/975993751455559680/977079461679865946/RTGComando1.jpg)
 
 Comando `?registrarTime`
 
-![image](https://cdn.discordapp.com/attachments/975993751455559680/976189072152358912/rounded-in-photoretrica_3.png)
+![image](https://cdn.discordapp.com/attachments/975993751455559680/977079461260455966/RTGComando2.jpg)
 
 * <h2> Objetivos: </h2>
 * Adicionar players através de reação
-* Não repetir lanes
 * Salvar estatísticas em banco de dados
+* Não repetir lanes
