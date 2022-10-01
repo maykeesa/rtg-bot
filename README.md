@@ -33,7 +33,9 @@ Agradecemos às seguintes pessoas que contribuíram para este projeto:
   <tr>
     <td align="center">
       <a href="#">
-        <img src="https://avatars.githubusercontent.com/u/81484737?v=4" width="100px;" alt="Foto do Mayke Erick no GitHub"/><br>
+        <a href="https://github.com/MaykeESA">
+          <img src="https://avatars.githubusercontent.com/u/81484737?v=4" width="100px;" alt="Foto do Mayke Erick no GitHub"/><br>
+        </a>
         <sub>
           <b>Mayke Erick</b>
         </sub>
@@ -41,7 +43,9 @@ Agradecemos às seguintes pessoas que contribuíram para este projeto:
     </td>
     <td align="center">
       <a href="#">
-        <img src="https://avatars.githubusercontent.com/u/61173866?v=4" width="100px;" alt="Foto do Brenno Oliveira no GitHub"/><br>
+        <a href="https://github.com/brennoliveira">
+          <img src="https://avatars.githubusercontent.com/u/61173866?v=4" width="100px;" alt="Foto do Brenno Oliveira no GitHub"/><br>
+        </a>
         <sub>
           <b>Brenno Oliveira</b>
         </sub>
@@ -49,7 +53,9 @@ Agradecemos às seguintes pessoas que contribuíram para este projeto:
     </td>
     <td align="center">
       <a href="#">
-        <img src="https://avatars.githubusercontent.com/u/105755546?v=4" width="100px;" alt="Foto do Gustavo Andrade no GitHub"/><br>
+        <a href="https://github.com/GugaAAndrade">
+          <img src="https://avatars.githubusercontent.com/u/105755546?v=4" width="100px;" alt="Foto do Gustavo Andrade no GitHub"/><br>
+        </a>
         <sub>
           <b>Gustavo Andrade</b>
         </sub>
