@@ -12,11 +12,11 @@ async def timeLane(ctx, listaTimeA, listaTimeB, bot):
         color=0xFEE581,
     )
 
-    embed.set_author(name = bot.user.name, icon_url= bot.user.avatar_url)
+    embed.set_author(name = bot.user.name, icon_url= bot.user.avatar)
     embed.set_thumbnail(url=lolIcon)
     embed.add_field(name="─────| TIME BLUE |─────", value= "\n".join(listaTimeA))
     embed.add_field(name="─────| TIME RED  |─────", value="\n".join(listaTimeB), inline=False)
-    embed.set_footer(text="Feito por " + bot.user.name, icon_url= bot.user.avatar_url)
+    embed.set_footer(text="Feito por " + bot.user.name, icon_url= bot.user.avatar)
     await ctx.send(embed=embed)
 
 #Embed do !registrarTime
@@ -27,9 +27,9 @@ async def time(ctx, listaTimeA, listaTimeB, bot):
         color=0xFEE581,
     )
 
-    embed.set_author(name = bot.user.name, icon_url= bot.user.avatar_url)
+    embed.set_author(name = bot.user.name, icon_url= bot.user.avatar)
     embed.set_thumbnail(url=lolIcon)
     embed.add_field(name="─────| TIME BLUE |─────", value= "\n".join(listaTimeA))
     embed.add_field(name="─────| TIME RED  |─────", value= "\n".join(listaTimeB), inline=False)
-    embed.set_footer(text="Feito por " + bot.user.name, icon_url= bot.user.avatar_url)
+    embed.set_footer(text="Feito por " + bot.user.name, icon_url= bot.user.avatar)
     await ctx.send(embed=embed)

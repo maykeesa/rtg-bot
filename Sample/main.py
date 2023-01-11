@@ -1,8 +1,10 @@
 import embed
 import formatting
+import discord
 from discord.ext import commands
 
-bot = commands.Bot("?")
+intents = discord.Intents.all()
+bot = commands.Bot(intents=intents, command_prefix="?")
 
 #Bot inicialização
 @bot.event
@@ -27,4 +29,4 @@ async def registrarTime(message, jogadores):
     listaTimeA, listaTimeB = formatting.formatarTime(jogadores)
     await embed.time(message, listaTimeA, listaTimeB, bot)
 
-bot.run('')
+bot.run('OTc1OTQ3MDcyNDg4NDg0OTI2.GDwnKM.Dx1hfLO4CYJ0qU1CMZ_nmceXPJTIoUudajdoYc')
