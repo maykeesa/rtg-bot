@@ -3,22 +3,6 @@
 
 <br>
 
-## 💻 Pré-requisitos
-
-Antes de começar, verifique se você atendeu aos seguintes requisitos:
-* Python 3
-* Biblioteca: ```discord.py```
-
-## 🚀 Instalando a biblioteca
-
-Para instalar a biblioteca é necessário o ```pip```, siga estas etapas no terminal:
-
-```
-python get-pip.py
-
-pip install discord.py
-```
-
 <h2> 🎯 Objetivos: </h2>
 
 * Adicionar players através de reação
