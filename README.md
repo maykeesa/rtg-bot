@@ -1,4 +1,4 @@
-# Random Team Generator Bot - 🤖
+# Random Team Generator Bot - 🤖 | [Link](https://discord.com/oauth2/authorize?client_id=975947072488484926&scope=bot&permissions=274877991936)
 * Bot que randomiza times para a sua personalizada no lolzinho!
 
 <br>
@@ -68,9 +68,9 @@ Agradecemos às seguintes pessoas que contribuíram para este projeto:
 
 Comando `?registrarTimeLane`
 
-![image](https://cdn.discordapp.com/attachments/975993751455559680/977079461679865946/RTGComando1.jpg)
+![image](https://cdn.discordapp.com/attachments/817401092752932916/1065011436348248074/x.png)
 
 Comando `?registrarTime`
 
-![image](https://cdn.discordapp.com/attachments/975993751455559680/977079461260455966/RTGComando2.jpg)
+![image](https://cdn.discordapp.com/attachments/817401092752932916/1065011457110061056/y.png)
 
