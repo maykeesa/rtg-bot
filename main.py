@@ -1,5 +1,5 @@
-import embed
-import formatting
+import sample.embed as embed
+import sample.formatting as formatting
 import discord
 from discord.ext import commands
 
@@ -29,4 +29,4 @@ async def registrarTime(message, jogadores):
     listaTimeA, listaTimeB = formatting.formatarTime(jogadores)
     await embed.time(message, listaTimeA, listaTimeB, bot)
 
-bot.run('OTc1OTQ3MDcyNDg4NDg0OTI2.GDwnKM.Dx1hfLO4CYJ0qU1CMZ_nmceXPJTIoUudajdoYc')
+bot.run('')

@@ -1,5 +1,5 @@
 import discord
-import jokes as jk
+import sample.jokes as jk
 
 # Icone do LoL
 lolIcon = "https://cdn.discordapp.com/attachments/975993751455559680/976940532251127918/lolIcon.png"

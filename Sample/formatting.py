@@ -1,5 +1,5 @@
-import randomTeam.randomTeam as rt
-import randomTeam.randomTeamLane as rtl
+import sample.randomTeam.randomTeam as rt
+import sample.randomTeam.randomTeamLane as rtl
 
 def formatarTimeLane(jogadores):
     listaTimeLaneA = []
