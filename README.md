@@ -1,4 +1,4 @@
-# Random Team Generator Bot - 🤖 | [Link](https://discord.com/oauth2/authorize?client_id=975947072488484926&scope=bot&permissions=274877991936)
+# Random Team Generator Bot - 🤖 | [Link](https://discord.com/api/oauth2/authorize?client_id=975947072488484926&permissions=412317207552&scope=applications.commands%20bot)
 * Bot que randomiza times para a sua personalizada no lolzinho!
 
 <br>
