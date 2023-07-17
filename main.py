@@ -26,7 +26,6 @@ async def registrarTimeLane(message, jogadores):
 #Registrador de time aleatórios
 @bot.command(name="registrarTime")
 async def registrarTime(message, jogadores):
-    print("Ola")
     listaTimeA, listaTimeB = formatting.formatarTime(jogadores)
     await embed.time(message, listaTimeA, listaTimeB, bot)
 
