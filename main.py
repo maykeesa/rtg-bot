@@ -13,7 +13,7 @@ load_dotenv()
 #Bot inicialização
 @bot.event
 async def on_ready():
-    print(f'Logged on as {bot.user}!')
+    print(f'Logged on as {bot.user}!!')
 
 #Log do discord
 @bot.event
