@@ -29,4 +29,4 @@ async def registrarTime(message, jogadores):
     listaTimeA, listaTimeB = formatting.formatarTime(jogadores)
     await embed.time(message, listaTimeA, listaTimeB, bot)
 
-bot.run('')
+bot.run('${{ secrets.BOT_TOKEN }}')
