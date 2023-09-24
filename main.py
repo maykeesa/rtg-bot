@@ -1,10 +1,14 @@
-import sample.embed as embed
-import sample.formatting as formatting
+import Sample.embed as embed
+import Sample.formatting as formatting
 import discord
+import os
+
+from dotenv import load_dotenv
 from discord.ext import commands
 
 intents = discord.Intents.all()
 bot = commands.Bot(intents=intents, command_prefix="?")
+load_dotenv()
 
 #Bot inicialização
 @bot.event
@@ -29,4 +33,4 @@ async def registrarTime(message, jogadores):
     listaTimeA, listaTimeB = formatting.formatarTime(jogadores)
     await embed.time(message, listaTimeA, listaTimeB, bot)
 
-bot.run('${{ secrets.BOT_TOKEN }}')
+bot.run(os.getenv("TOKEN"))
