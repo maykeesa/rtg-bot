@@ -52,9 +52,9 @@ Agradecemos às seguintes pessoas que contribuíram para este projeto:
 
 Comando `?registrarTimeLane`
 
-![image](https://cdn.discordapp.com/attachments/817401092752932916/1065011436348248074/x.png)
+![image](https://drive.google.com/uc?export=view&id=1eXsAOn5hZ7FdYodCvGm2HxETGEkjIzdV)
 
 Comando `?registrarTime`
 
-![image](https://cdn.discordapp.com/attachments/817401092752932916/1065011457110061056/y.png)
+![image](https://drive.google.com/uc?export=view&id=18tIef-8l2DJm12bGHgMnq19oIcceFRXf)
 
