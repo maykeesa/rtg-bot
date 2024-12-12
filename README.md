@@ -3,7 +3,7 @@
 
 <br>
 
-<h2> 🎯 Objetivos: </h2>
+## 🎯 Objetivos:
 
 * Adicionar players através de reação
 * Salvar estatísticas em banco de dados
