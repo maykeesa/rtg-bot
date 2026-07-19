@@ -23,8 +23,8 @@ jokes = [
 "Dylan = Coinflip"
 ]
 
-def choiceJoke(): 
+def choice_joke():
     choiced = choice(jokes)
-    
+
     return choiced
 
