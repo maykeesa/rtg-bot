@@ -21,7 +21,11 @@ async def on_message(message):
     await bot.process_commands(message)
 
 async def main():
+    token = os.getenv("TOKEN")
+    if not token:
+        raise RuntimeError("TOKEN não definido. Copie .env.example para .env e preencha o token do bot.")
+
     await bot.load_extension("bot.cogs.team_commands")
-    await bot.start(os.getenv("TOKEN"))
+    await bot.start(token)
 
 asyncio.run(main())
