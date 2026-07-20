@@ -13,7 +13,12 @@ class TeamCommands(commands.Cog):
         description="Sorteia dois times e as lanes de cada jogador",
     )
     async def registrar_time_lane(self, ctx, jogadores: str):
-        lista_time_a, lista_time_b = formatting.formatar_time_lane(jogadores)
+        try:
+            lista_time_a, lista_time_b = formatting.formatar_time_lane(jogadores)
+        except ValueError as erro:
+            await ctx.send(str(erro))
+            return
+
         await embed.time_lane(ctx, lista_time_a, lista_time_b, self.bot)
 
     @commands.hybrid_command(
@@ -22,7 +27,12 @@ class TeamCommands(commands.Cog):
         description="Sorteia dois times aleatórios",
     )
     async def registrar_time(self, ctx, jogadores: str):
-        lista_time_a, lista_time_b = formatting.formatar_time(jogadores)
+        try:
+            lista_time_a, lista_time_b = formatting.formatar_time(jogadores)
+        except ValueError as erro:
+            await ctx.send(str(erro))
+            return
+
         await embed.time(ctx, lista_time_a, lista_time_b, self.bot)
 
 async def setup(bot):
