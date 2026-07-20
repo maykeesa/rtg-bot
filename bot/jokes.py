@@ -1,26 +1,22 @@
 from random import choice
 
 jokes = [
-"Susu jg? vai de Voli ou Poppy?",
-"Picka irelia Dylan",
 "Bot viciado só cai eu de sup",
-"Jominha sup? KKKKKKKK",
-"Wiz e Void no mesmo time?",
 "Já reclamaram do sorteio hoje?",
-"Dyellol: Feed ou Fed? 🤷🏼‍♂️",
-"Coitado de biro indo supp dnv =(",
-"Dyel no meu time = LIXO, no time inimigo = DEUS",
-"Rômulo alérgico a PDL",
-"Wizz após morrer: PUTA QUE PARIU, FOI QUASE!",
-"Dylan no time de Viny = Loose",
-"Romulo jg = ff",
-"Será que Wiz vai cair ADC?",
-"Jominha X Dylan pelos velhos tempos família",
-"Susu off role = ff",
-"Há três coisas que não se escondem por muito tempo: o sol, a lua, e a derrota de Dyellol",
 "Gostaria de abençoar todos e dizer que a gente é um time, não uma família",
 "Vai deixar seu irmão morrer? vou",
-"Dylan = Coinflip"
+"Hoje o RNG tá do seu lado ou não?",
+"Sempre tem alguém reclamando da lane, sempre",
+"Perdeu a lane? Só counter-picka na próxima",
+"Jungle que não gankeia é só um bot de menu",
+"First blood é sempre culpa do sup",
+"Se o time tá ruim, é o sorteio. Se o time tá bom, é talento",
+"GG ez só se ganhar",
+"Voice chat: onde amizades morrem mais rápido que o nexus",
+"Surrender aos 20 é só carinho",
+"Se flamar não builda dano, pelo menos builda ódio",
+"Sorteio não escolhe covarde, escolhe quem vai de off role",
+"Reportar não bane, mas alivia"
 ]
 
 def choice_joke():
