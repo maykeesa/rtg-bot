@@ -1,11 +1,17 @@
+import os
 import discord
 import bot.jokes as jk
 
 # Icone do LoL
-lol_icon = "https://cdn.discordapp.com/attachments/975993751455559680/976940532251127918/lolIcon.png"
+LOL_ICON_PATH = os.path.join(os.path.dirname(__file__), "..", "imgs", "lolIcon.png")
+LOL_ICON_FILENAME = "lolIcon.png"
+
+def _lol_icon_file():
+    return discord.File(LOL_ICON_PATH, filename=LOL_ICON_FILENAME)
 
 #Embed do !registrarTimeLane
-async def time_lane(ctx, lista_time_a, lista_time_b, bot):
+async def time_lane(ctx, lista_time_blue, lista_time_red, bot):
+    icon_file = _lol_icon_file()
     embed = discord.Embed(
         title="Time e Lanes aleatórias",
         description=f"{jk.choice_joke()}",
@@ -13,14 +19,15 @@ async def time_lane(ctx, lista_time_a, lista_time_b, bot):
     )
 
     embed.set_author(name = bot.user.name, icon_url= bot.user.avatar)
-    embed.set_thumbnail(url=lol_icon)
-    embed.add_field(name="─────| TIME BLUE |─────", value= "\n".join(lista_time_a))
-    embed.add_field(name="─────| TIME RED  |─────", value="\n".join(lista_time_b), inline=False)
+    embed.set_thumbnail(url=f"attachment://{LOL_ICON_FILENAME}")
+    embed.add_field(name="─────| TIME BLUE |─────", value= "\n".join(lista_time_blue))
+    embed.add_field(name="─────| TIME RED  |─────", value="\n".join(lista_time_red), inline=False)
     embed.set_footer(text="Feito por " + bot.user.name, icon_url= bot.user.avatar)
-    await ctx.send(embed=embed)
+    await ctx.send(file=icon_file, embed=embed)
 
 #Embed do !registrarTime
-async def time(ctx, lista_time_a, lista_time_b, bot):
+async def time(ctx, lista_time_blue, lista_time_red, bot):
+    icon_file = _lol_icon_file()
     embed = discord.Embed(
         title="Times aleatórios",
         description=f"{jk.choice_joke()}",
@@ -28,8 +35,8 @@ async def time(ctx, lista_time_a, lista_time_b, bot):
     )
 
     embed.set_author(name = bot.user.name, icon_url= bot.user.avatar)
-    embed.set_thumbnail(url=lol_icon)
-    embed.add_field(name="─────| TIME BLUE |─────", value= "\n".join(lista_time_a))
-    embed.add_field(name="─────| TIME RED  |─────", value= "\n".join(lista_time_b), inline=False)
+    embed.set_thumbnail(url=f"attachment://{LOL_ICON_FILENAME}")
+    embed.add_field(name="─────| TIME BLUE |─────", value= "\n".join(lista_time_blue))
+    embed.add_field(name="─────| TIME RED  |─────", value= "\n".join(lista_time_red), inline=False)
     embed.set_footer(text="Feito por " + bot.user.name, icon_url= bot.user.avatar)
-    await ctx.send(embed=embed)
+    await ctx.send(file=icon_file, embed=embed)
