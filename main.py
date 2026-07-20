@@ -25,15 +25,12 @@ class RtgBot(commands.Bot):
 
 bot = RtgBot(intents=intents, command_prefix="?")
 
-#Bot inicialização
 @bot.event
 async def on_ready():
     print(f'Logged on as {bot.user}!!')
 
-#Log do discord
 @bot.event
 async def on_message(message):
-    print(f'Message from {message.author}: {message.content}')
     await bot.process_commands(message)
 
 async def main():
