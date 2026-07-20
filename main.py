@@ -5,9 +5,25 @@ import os
 from dotenv import load_dotenv
 from discord.ext import commands
 
-intents = discord.Intents.all()
-bot = commands.Bot(intents=intents, command_prefix="?")
 load_dotenv()
+
+intents = discord.Intents.all()
+
+class RtgBot(commands.Bot):
+    async def setup_hook(self):
+        await self.load_extension("bot.cogs.team_commands")
+
+        sync_global = os.getenv("SYNC_GLOBAL", "false").lower() == "true"
+        guild_id = os.getenv("GUILD_ID")
+
+        if sync_global:
+            await self.tree.sync()
+        elif guild_id:
+            guild = discord.Object(id=int(guild_id))
+            self.tree.copy_global_to(guild=guild)
+            await self.tree.sync(guild=guild)
+
+bot = RtgBot(intents=intents, command_prefix="?")
 
 #Bot inicialização
 @bot.event
@@ -25,7 +41,6 @@ async def main():
     if not token:
         raise RuntimeError("TOKEN não definido. Copie .env.example para .env e preencha o token do bot.")
 
-    await bot.load_extension("bot.cogs.team_commands")
     await bot.start(token)
 
 asyncio.run(main())
