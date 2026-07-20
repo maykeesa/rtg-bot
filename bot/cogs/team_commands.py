@@ -1,5 +1,6 @@
 import bot.embed as embed
 import bot.formatting as formatting
+import bot.views as views
 
 from discord.ext import commands
 from bot.exceptions import ValidacaoError
@@ -20,7 +21,9 @@ class TeamCommands(commands.Cog):
             await embed.erro(ctx, erro, self.bot)
             return
 
-        await embed.time_lane(ctx, lista_time_a, lista_time_b, self.bot)
+        view = views.IniciarPartidaView(ctx.author.id, lista_time_a, lista_time_b, self.bot)
+        mensagem = await embed.time_lane(ctx, lista_time_a, lista_time_b, self.bot, view=view)
+        view.message = mensagem
 
     @commands.hybrid_command(
         name="registrar-time",
@@ -34,7 +37,9 @@ class TeamCommands(commands.Cog):
             await embed.erro(ctx, erro, self.bot)
             return
 
-        await embed.time(ctx, lista_time_a, lista_time_b, self.bot)
+        view = views.IniciarPartidaView(ctx.author.id, lista_time_a, lista_time_b, self.bot)
+        mensagem = await embed.time(ctx, lista_time_a, lista_time_b, self.bot, view=view)
+        view.message = mensagem
 
 async def setup(bot):
     await bot.add_cog(TeamCommands(bot))

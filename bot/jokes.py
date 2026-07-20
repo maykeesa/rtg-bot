@@ -14,7 +14,6 @@ jokes = [
 "GG ez só se ganhar",
 "Voice chat: onde amizades morrem mais rápido que o nexus",
 "Surrender aos 20 é só carinho",
-"Se flamar não builda dano, pelo menos builda ódio",
 "Sorteio não escolhe covarde, escolhe quem vai de off role",
 "Reportar não bane, mas alivia"
 ]
