@@ -1,11 +1,17 @@
 import bot.random_team.random_team as rt
 import bot.random_team.random_team_lane as rtl
 
+from bot.exceptions import JogadoresInsuficientesError, JogadoresExcedentesError
+
 def _parse_players(jogadores):
     players = [p.strip() for p in jogadores.split(",") if p.strip()]
+    unicos = set(players)
 
-    if len(set(players)) < 10:
-        raise ValueError("São necessários 10 jogadores únicos, separados por vírgula.")
+    if len(unicos) < 10:
+        raise JogadoresInsuficientesError(10, len(unicos))
+
+    if len(unicos) > 10:
+        raise JogadoresExcedentesError(10, len(unicos))
 
     return players
 

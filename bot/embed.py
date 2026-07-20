@@ -2,12 +2,8 @@ import os
 import discord
 import bot.jokes as jk
 
-# Icone do LoL
-LOL_ICON_PATH = os.path.join(os.path.dirname(__file__), "..", "imgs", "lolIcon.png")
-LOL_ICON_FILENAME = "lolIcon.png"
-
-def _lol_icon_file():
-    return discord.File(LOL_ICON_PATH, filename=LOL_ICON_FILENAME)
+TEAM_ICON_FILENAME = "blitz_angry.png"
+ERRO_IMAGE_FILENAME = "blitz_broken.png"
 
 #Embed do !registrarTimeLane
 async def time_lane(ctx, lista_time_blue, lista_time_red, bot):
@@ -19,7 +15,7 @@ async def time_lane(ctx, lista_time_blue, lista_time_red, bot):
     )
 
     embed.set_author(name = bot.user.name, icon_url= bot.user.display_avatar.url)
-    embed.set_thumbnail(url=f"attachment://{LOL_ICON_FILENAME}")
+    embed.set_thumbnail(url=f"attachment://{TEAM_ICON_FILENAME}")
     embed.add_field(name="─────| TIME BLUE |─────", value= "\n".join(lista_time_blue))
     embed.add_field(name="─────| TIME RED  |─────", value="\n".join(lista_time_red), inline=False)
     embed.set_footer(text="Feito por " + bot.user.name, icon_url= bot.user.display_avatar.url)
@@ -35,8 +31,29 @@ async def time(ctx, lista_time_blue, lista_time_red, bot):
     )
 
     embed.set_author(name = bot.user.name, icon_url= bot.user.display_avatar.url)
-    embed.set_thumbnail(url=f"attachment://{LOL_ICON_FILENAME}")
+    embed.set_thumbnail(url=f"attachment://{TEAM_ICON_FILENAME}")
     embed.add_field(name="─────| TIME BLUE |─────", value= "\n".join(lista_time_blue))
     embed.add_field(name="─────| TIME RED  |─────", value= "\n".join(lista_time_red), inline=False)
     embed.set_footer(text="Feito por " + bot.user.name, icon_url= bot.user.display_avatar.url)
     await ctx.send(file=icon_file, embed=embed)
+
+#Embed genérico de erro
+async def erro(ctx, erro, bot):
+    image_file = _erro_image_file()
+    embed = discord.Embed(
+        title=":x: " + erro.titulo,
+        description=str(erro),
+        color=0xE74C3C,
+    )
+
+    embed.set_author(name=bot.user.name, icon_url=bot.user.display_avatar.url)
+    embed.set_thumbnail(url=f"attachment://{ERRO_IMAGE_FILENAME}")
+    await ctx.send(file=image_file, embed=embed)
+
+def _lol_icon_file():
+    LOL_ICON_PATH = os.path.join(os.path.dirname(__file__), "..", "imgs", TEAM_ICON_FILENAME)
+    return discord.File(LOL_ICON_PATH, filename=TEAM_ICON_FILENAME)
+
+def _erro_image_file():
+    ERRO_IMAGE_PATH = os.path.join(os.path.dirname(__file__), "..", "imgs", ERRO_IMAGE_FILENAME)
+    return discord.File(ERRO_IMAGE_PATH, filename=ERRO_IMAGE_FILENAME)

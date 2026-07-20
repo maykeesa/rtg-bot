@@ -2,6 +2,7 @@ import bot.embed as embed
 import bot.formatting as formatting
 
 from discord.ext import commands
+from bot.exceptions import ValidacaoError
 
 class TeamCommands(commands.Cog):
     def __init__(self, bot):
@@ -15,8 +16,8 @@ class TeamCommands(commands.Cog):
     async def registrar_time_lane(self, ctx, jogadores: str):
         try:
             lista_time_a, lista_time_b = formatting.formatar_time_lane(jogadores)
-        except ValueError as erro:
-            await ctx.send(str(erro))
+        except ValidacaoError as erro:
+            await embed.erro(ctx, erro, self.bot)
             return
 
         await embed.time_lane(ctx, lista_time_a, lista_time_b, self.bot)
@@ -29,8 +30,8 @@ class TeamCommands(commands.Cog):
     async def registrar_time(self, ctx, jogadores: str):
         try:
             lista_time_a, lista_time_b = formatting.formatar_time(jogadores)
-        except ValueError as erro:
-            await ctx.send(str(erro))
+        except ValidacaoError as erro:
+            await embed.erro(ctx, erro, self.bot)
             return
 
         await embed.time(ctx, lista_time_a, lista_time_b, self.bot)
