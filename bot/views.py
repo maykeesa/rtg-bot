@@ -5,6 +5,8 @@ import discord
 
 import bot.embed as embed
 
+from bot.constants import TEAM_ICON_FILENAME
+
 CONFIRMACAO_TIMEOUT = 120 # 2m
 PARTIDA_TIMEOUT = 9000  # 2h30m
 
@@ -33,7 +35,7 @@ class IniciarPartidaView(_AutorOnlyView):
     @discord.ui.button(label="Iniciar Partida", style=discord.ButtonStyle.success, emoji="▶️")
     async def iniciar_partida(self, interaction: discord.Interaction, button: discord.ui.Button):
         embed_original = copy.deepcopy(interaction.message.embeds[0])
-        embed_original.set_thumbnail(url=f"attachment://{embed.TEAM_ICON_FILENAME}")
+        embed_original.set_thumbnail(url=f"attachment://{TEAM_ICON_FILENAME}")
 
         confirm_view = ConfirmarPartidaView(
             self.autor_id, self.lista_time_azul, self.lista_time_vermelho, self.bot, embed_original
