@@ -6,6 +6,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Bot de Discord (discord.py) que sorteia dois times de 5 jogadores para partidas customizadas de League of Legends, opcionalmente com lanes atribuídas. Escrito em português (nomes de funções, variáveis e mensagens).
 
+Documentação da lib: https://discordpy.readthedocs.io/en/latest/api.html
+
 ## Setup e execução
 
 ```bash

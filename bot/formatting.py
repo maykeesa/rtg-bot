@@ -16,10 +16,11 @@ def _parse_players(jogadores):
     return players
 
 def formatar_time_lane(jogadores):
+    return formatar_time_lane_lista(_parse_players(jogadores))
+
+def formatar_time_lane_lista(players):
     lista_time_lane_a = []
     lista_time_lane_b = []
-
-    players = _parse_players(jogadores)
 
     time_a, time_b = rtl.select_team_lane(players)
     for i in time_a.items():
@@ -31,10 +32,11 @@ def formatar_time_lane(jogadores):
     return lista_time_lane_a, lista_time_lane_b
 
 def formatar_time(jogadores):
+    return formatar_time_lista(_parse_players(jogadores))
+
+def formatar_time_lista(players):
     lista_time_a = []
     lista_time_b = []
-
-    players = _parse_players(jogadores)
 
     time_a, time_b = rt.select_players(players)
     for i in time_a:

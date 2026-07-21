@@ -1,5 +1,6 @@
 import bot.embed as embed
 import bot.formatting as formatting
+import bot.signup as signup
 import bot.views as views
 
 from discord.ext import commands
@@ -14,9 +15,13 @@ class TeamCommands(commands.Cog):
         aliases=["registrarTimeLane"],
         description="Sorteia dois times e as lanes de cada jogador",
     )
-    async def registrar_time_lane(self, ctx, jogadores: str):
+    async def registrar_time_lane(self, ctx, jogadores: str = None):
         try:
-            lista_time_a, lista_time_b = formatting.formatar_time_lane(jogadores)
+            if jogadores is None:
+                nomes = await signup.coletar_jogadores(ctx, self.bot)
+                lista_time_a, lista_time_b = formatting.formatar_time_lane_lista(nomes)
+            else:
+                lista_time_a, lista_time_b = formatting.formatar_time_lane(jogadores)
         except ValidacaoError as erro:
             await embed.erro(ctx, erro, self.bot)
             return
@@ -30,9 +35,13 @@ class TeamCommands(commands.Cog):
         aliases=["registrarTime"],
         description="Sorteia dois times aleatórios",
     )
-    async def registrar_time(self, ctx, jogadores: str):
+    async def registrar_time(self, ctx, jogadores: str = None):
         try:
-            lista_time_a, lista_time_b = formatting.formatar_time(jogadores)
+            if jogadores is None:
+                nomes = await signup.coletar_jogadores(ctx, self.bot)
+                lista_time_a, lista_time_b = formatting.formatar_time_lista(nomes)
+            else:
+                lista_time_a, lista_time_b = formatting.formatar_time(jogadores)
         except ValidacaoError as erro:
             await embed.erro(ctx, erro, self.bot)
             return
