@@ -16,19 +16,13 @@ class TeamCommands(commands.Cog):
         description="Sorteia dois times e as lanes de cada jogador",
     )
     async def registrar_time_lane(self, ctx, jogadores: str = None):
-        try:
-            if jogadores is None:
-                nomes = await signup.coletar_jogadores(ctx, self.bot)
-                lista_time_a, lista_time_b = formatting.formatar_time_lane_lista(nomes)
-            else:
-                lista_time_a, lista_time_b = formatting.formatar_time_lane(jogadores)
-        except ValidacaoError as erro:
-            await embed.erro(ctx, erro, self.bot)
-            return
-
-        view = views.IniciarPartidaView(ctx.author.id, lista_time_a, lista_time_b, self.bot)
-        mensagem = await embed.time_lane(ctx, lista_time_a, lista_time_b, self.bot, view=view)
-        view.message = mensagem
+        await self._registrar(
+            ctx,
+            jogadores,
+            formatting.formatar_time_lane,
+            formatting.formatar_time_lane_lista,
+            embed.time_lane,
+        )
 
     @commands.hybrid_command(
         name="registrar-time",
@@ -36,18 +30,27 @@ class TeamCommands(commands.Cog):
         description="Sorteia dois times aleatórios",
     )
     async def registrar_time(self, ctx, jogadores: str = None):
+        await self._registrar(
+            ctx,
+            jogadores,
+            formatting.formatar_time,
+            formatting.formatar_time_lista,
+            embed.time,
+        )
+
+    async def _registrar(self, ctx, jogadores, formatar, formatar_lista, enviar_embed):
         try:
             if jogadores is None:
                 nomes = await signup.coletar_jogadores(ctx, self.bot)
-                lista_time_a, lista_time_b = formatting.formatar_time_lista(nomes)
+                lista_time_azul, lista_time_vermelho = formatar_lista(nomes)
             else:
-                lista_time_a, lista_time_b = formatting.formatar_time(jogadores)
+                lista_time_azul, lista_time_vermelho = formatar(jogadores)
         except ValidacaoError as erro:
             await embed.erro(ctx, erro, self.bot)
             return
 
-        view = views.IniciarPartidaView(ctx.author.id, lista_time_a, lista_time_b, self.bot)
-        mensagem = await embed.time(ctx, lista_time_a, lista_time_b, self.bot, view=view)
+        view = views.IniciarPartidaView(ctx.author.id, lista_time_azul, lista_time_vermelho, self.bot)
+        mensagem = await enviar_embed(ctx, lista_time_azul, lista_time_vermelho, self.bot, view=view)
         view.message = mensagem
 
 async def setup(bot):
