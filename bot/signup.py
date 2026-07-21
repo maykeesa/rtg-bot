@@ -5,6 +5,7 @@ import discord
 
 import bot.embed as embed
 
+from bot.constants import TOTAL_JOGADORES
 from bot.exceptions import InscricaoExpiradaError
 
 INSCRICAO_TIMEOUT = 120 # 2m
@@ -26,7 +27,7 @@ async def coletar_jogadores(ctx, bot):
             and payload.user_id != bot.user.id
         )
 
-    while len(inscritos) < 10:
+    while len(inscritos) < TOTAL_JOGADORES:
         restante = (expira_em - discord.utils.utcnow()).total_seconds()
         if restante <= 0:
             break
@@ -44,7 +45,7 @@ async def coletar_jogadores(ctx, bot):
         novo_embed, _ = embed.inscricao(bot, list(inscritos.values()), expira_unix, emoji)
         await mensagem.edit(embed=novo_embed)
 
-    if len(inscritos) < 10:
+    if len(inscritos) < TOTAL_JOGADORES:
         raise InscricaoExpiradaError(mensagem)
 
     return _nomes_unicos(list(inscritos.values()))
