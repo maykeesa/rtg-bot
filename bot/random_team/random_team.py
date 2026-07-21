@@ -1,17 +1,19 @@
 from random import choice
 
+from bot.constants import JOGADORES_POR_TIME
+
 def select_players(players):
-  time_a = []
-  time_b = []
+  time_azul = []
+  time_vermelho = []
 
-  while len(time_a) != 5:
+  while len(time_azul) != JOGADORES_POR_TIME:
     player = choice(players)
-    if player not in time_a:
-      time_a.append(player)
+    if player not in time_azul:
+      time_azul.append(player)
 
-  while len(time_b) != 5:
+  while len(time_vermelho) != JOGADORES_POR_TIME:
     player = choice(players)
-    if player not in time_b and player not in time_a:
-      time_b.append(player)
+    if player not in time_vermelho and player not in time_azul:
+      time_vermelho.append(player)
 
-  return time_a, time_b
+  return time_azul, time_vermelho
