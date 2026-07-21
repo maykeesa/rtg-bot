@@ -8,6 +8,13 @@ Bot de Discord (discord.py) que sorteia dois times de 5 jogadores para partidas 
 
 Documentação da lib: https://discordpy.readthedocs.io/en/latest/api.html
 
+## Convenções
+
+- **Idioma**: nomes de arquivo sempre em inglês (`formatting.py`, `signup.py`); funções, variáveis, mensagens e rótulos de embed sempre em português.
+- **Ordem dos times**: em qualquer retorno/parâmetro de par de times, o primeiro é sempre o **time azul** e o segundo o **time vermelho** — do `random_team` até o embed. Não inverter em nenhuma camada.
+- **Constantes compartilhadas** (nº de jogadores, nomes de arquivo de imagem, cores de embed) vivem em `bot/constants.py`.
+- **Fluxos dos comandos** estão documentados em `.claude/flow/*.md` — atualizar ao mudar um fluxo.
+
 ## Setup e execução
 
 ```bash
@@ -30,11 +37,13 @@ Não há testes automatizados nem configuração de lint/formatter no projeto.
 Fluxo de um comando, de ponta a ponta:
 
 1. **`main.py`** — cria o `RtgBot`, carrega a cog `bot.cogs.team_commands` e sincroniza os slash commands conforme `SYNC_GLOBAL`/`GUILD_ID`.
-2. **`bot/cogs/team_commands.py`** — define os `hybrid_command`s (`registrar-time-lane`, `registrar-time`), que recebem a string bruta de jogadores, chamam `bot/formatting.py`, capturam `ValidacaoError` (`bot/exceptions/`) para responder erros ao usuário, e anexam uma `views.IniciarPartidaView` ao embed do sorteio.
-3. **`bot/formatting.py`** — parseia a string de jogadores (`_parse_players`, exige exatamente 10 nomes únicos separados por vírgula, lançando `JogadoresInsuficientesError`/`JogadoresExcedentesError` conforme o caso) e delega o sorteio para `bot/random_team/`, formatando o resultado em listas de strings prontas para o embed.
-4. **`bot/random_team/random_team.py`** e **`random_team_lane.py`** — lógica pura de sorteio (sem I/O): dividem os 10 jogadores em dois times de 5, e no caso de `random_team_lane`, também atribuem lanes fixas (top/jungle/mid/adc/sup) por ordem de sorteio.
-5. **`bot/embed.py`** — monta os `discord.Embed`s de resposta (ícones locais em `imgs/`, anexados via `attachment://`) e piadas de `bot/jokes.py`. `time`/`time_lane` enviam a mensagem (`ctx.send`, aceitam `view=` opcional e retornam a `discord.Message`); `partida_em_andamento`/`partida_resultado` só constroem e retornam `(embed, file)` para quem chamar (uma `View`) editar a mensagem.
-6. **`bot/views.py`** — fluxo interativo pós-sorteio via `discord.ui.View`: botão "Iniciar Partida" → confirmação Sim/Não (expira em 2min) → partida em andamento com botões de resultado (expira em 2h30). Só o autor do comando pode interagir (`_AutorOnlyView.interaction_check`).
+2. **`bot/cogs/team_commands.py`** — define os `hybrid_command`s (`registrar-time-lane`, `registrar-time`), com o parâmetro `jogadores` opcional: informado → `bot/formatting.py`; omitido → inscrição via reação (`bot/signup.py`). Captura `ValidacaoError` (`bot/exceptions/`) para responder erros ao usuário e anexa uma `views.IniciarPartidaView` ao embed do sorteio.
+3. **`bot/signup.py`** — `coletar_jogadores` envia o embed de inscrição com prazo de 2min, coleta reações ✅ até juntar 10 membros únicos (editando o embed a cada entrada) e devolve os display names (deduplicados com sufixo). No timeout, lança `InscricaoExpiradaError` carregando a mensagem de inscrição (`mensagem_origem`) para `embed.erro` editá-la.
+4. **`bot/formatting.py`** — parseia a string de jogadores (`_parse_players`, exige exatamente 10 nomes únicos separados por vírgula, lançando `JogadoresInsuficientesError`/`JogadoresExcedentesError` conforme o caso) e delega o sorteio para `bot/random_team/`. As variantes `*_lista` pulam o parse e recebem a lista pronta (usadas pelo fluxo de reação).
+5. **`bot/random_team/random_team.py`** e **`random_team_lane.py`** — lógica pura de sorteio (sem I/O): dividem os 10 jogadores em dois times de 5 (azul primeiro, vermelho depois), e no caso de `random_team_lane`, também atribuem lanes fixas (top/jungle/mid/adc/sup) por ordem de sorteio.
+6. **`bot/embed.py`** — monta os `discord.Embed`s de resposta (ícones locais em `imgs/`, anexados via `attachment://`) e piadas de `bot/jokes.py`. `time`/`time_lane` enviam a mensagem (`ctx.send`, aceitam `view=` opcional e retornam a `discord.Message`); `partida_em_andamento`/`partida_resultado`/`inscricao` só constroem e retornam `(embed, file)` para quem chamar editar/enviar a mensagem. `erro` edita a `mensagem_origem` da exceção quando presente, senão envia mensagem nova.
+7. **`bot/views.py`** — fluxo interativo pós-sorteio via `discord.ui.View`: botão "Iniciar Partida" → confirmação Sim/Não (expira em 2min) → partida em andamento com botões de resultado (expira em 2h30). Só o autor do comando pode interagir (`_AutorOnlyView.interaction_check`).
+8. **`bot/constants.py`** — constantes compartilhadas: `TOTAL_JOGADORES`, `JOGADORES_POR_TIME`, nomes dos arquivos de imagem e cores dos embeds.
 
 Novos comandos de sorteio devem seguir esse mesmo pipeline: cog → formatting (validação + parsing) → random_team (lógica pura) → embed (apresentação).
 
