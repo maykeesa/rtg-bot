@@ -5,7 +5,6 @@
 
 ## 🎯 Objetivos:
 
-* Adicionar players através de reação
 * Salvar estatísticas em banco de dados
 * Não repetir lanes
 
@@ -57,11 +56,19 @@ Agradecemos às seguintes pessoas que contribuíram para este projeto:
 
 <h2> ⌨️ Comandos: </h2>
 
-Comando `?registrarTimeLane`
+Comando `/registrar-time-lane`, `?registrarTimeLane`
+- **Funcionamento**:
+  - Caso não seja enviado o parâmetro de jogadores irá iniciar a inscrição por reação (✅, 2min)
+- **Parâmetros**:
+  - jogadores -> Opcional | 10 nomes únicos separados por vírgula
 
-![image](https://drive.google.com/uc?export=view&id=1eXsAOn5hZ7FdYodCvGm2HxETGEkjIzdV)
+![image](./gifs/random-time-lane-players.gif)
 
-Comando `?registrarTime`
+Comando `/registrar-time`, `?registrarTime`
+- **Funcionamento**:
+  - Caso não seja enviado o parâmetro de jogadores irá iniciar a inscrição por reação (✅, 2min)
+- **Parâmetros**:
+  - jogadores -> Opcional | 10 nomes únicos separados por vírgula
 
-![image](https://drive.google.com/uc?export=view&id=18tIef-8l2DJm12bGHgMnq19oIcceFRXf)
+![image](./gifs/random-time-players.gif)
 
