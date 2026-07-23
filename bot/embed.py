@@ -13,6 +13,8 @@ from bot.constants import (
     COR_TIME_AZUL,
     COR_TIME_VERMELHO,
     COR_NEUTRA,
+    ROTULO_TIME_AZUL,
+    ROTULO_TIME_VERMELHO,
 )
 
 _RESULTADOS = {
@@ -37,8 +39,8 @@ async def _sorteio_classico(ctx, titulo, lista_time_azul, lista_time_vermelho, b
 
     embed.set_author(name=bot.user.name, icon_url=bot.user.display_avatar.url)
     embed.set_thumbnail(url=f"attachment://{TEAM_ICON_FILENAME}")
-    embed.add_field(name="─────| TIME AZUL |─────", value="\n".join(lista_time_azul))
-    embed.add_field(name="─────| TIME VERMELHO |─────", value="\n".join(lista_time_vermelho), inline=False)
+    embed.add_field(name=ROTULO_TIME_AZUL, value="\n".join(lista_time_azul))
+    embed.add_field(name=ROTULO_TIME_VERMELHO, value="\n".join(lista_time_vermelho), inline=False)
     embed.set_footer(text="Feito por " + bot.user.name, icon_url=bot.user.display_avatar.url)
     return await ctx.send(file=icon_file, embed=embed, view=view)
 
@@ -97,8 +99,8 @@ def partida_em_andamento(bot, lista_time_azul, lista_time_vermelho, inicio_unix)
 
     embed.set_author(name=bot.user.name, icon_url=bot.user.display_avatar.url)
     embed.set_thumbnail(url=f"attachment://{MATCH_ICON_FILENAME}")
-    embed.add_field(name="─────| TIME AZUL |─────", value="\n".join(lista_time_azul))
-    embed.add_field(name="─────| TIME VERMELHO |─────", value="\n".join(lista_time_vermelho), inline=False)
+    embed.add_field(name=ROTULO_TIME_AZUL, value="\n".join(lista_time_azul))
+    embed.add_field(name=ROTULO_TIME_VERMELHO, value="\n".join(lista_time_vermelho), inline=False)
     embed.add_field(name="Início", value=f"<t:{inicio_unix}:R>", inline=False)
     embed.set_footer(text="Feito por " + bot.user.name, icon_url=bot.user.display_avatar.url)
     return embed, file
@@ -117,14 +119,14 @@ def partida_resultado(bot, resultado, lista_time_azul, lista_time_vermelho):
     embed.set_author(name=bot.user.name, icon_url=bot.user.display_avatar.url)
     embed.set_thumbnail(url=f"attachment://{icon_filename}")
     if resultado == "azul":
-        embed.add_field(name="─────| TIME AZUL |─────", value="\n".join(lista_time_azul), inline=False)
+        embed.add_field(name=ROTULO_TIME_AZUL, value="\n".join(lista_time_azul), inline=False)
 
     elif resultado == "vermelho":
-        embed.add_field(name="─────| TIME VERMELHO |─────", value="\n".join(lista_time_vermelho), inline=False)
+        embed.add_field(name=ROTULO_TIME_VERMELHO, value="\n".join(lista_time_vermelho), inline=False)
 
     else:
-        embed.add_field(name="─────| TIME AZUL |─────", value="\n".join(lista_time_azul))
-        embed.add_field(name="─────| TIME VERMELHO |─────", value="\n".join(lista_time_vermelho), inline=False)
+        embed.add_field(name=ROTULO_TIME_AZUL, value="\n".join(lista_time_azul))
+        embed.add_field(name=ROTULO_TIME_VERMELHO, value="\n".join(lista_time_vermelho), inline=False)
 
     embed.set_footer(text="Feito por " + bot.user.name, icon_url=bot.user.display_avatar.url)
     return embed, file
