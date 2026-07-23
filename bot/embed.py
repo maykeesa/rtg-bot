@@ -101,7 +101,7 @@ def partida_em_andamento(bot, lista_time_azul, lista_time_vermelho, inicio_unix)
     embed.set_thumbnail(url=f"attachment://{MATCH_ICON_FILENAME}")
     embed.add_field(name=ROTULO_TIME_AZUL, value="\n".join(lista_time_azul))
     embed.add_field(name=ROTULO_TIME_VERMELHO, value="\n".join(lista_time_vermelho), inline=False)
-    embed.add_field(name="Início", value=f"<t:{inicio_unix}:R>", inline=False)
+    embed.add_field(name="Tempo", value=f"<t:{inicio_unix}:R>", inline=False)
     embed.set_footer(text="Feito por " + bot.user.name, icon_url=bot.user.display_avatar.url)
     return embed, file
 

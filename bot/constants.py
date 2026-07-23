@@ -14,3 +14,5 @@ COR_NEUTRA = 0x95A5A6
 
 ROTULO_TIME_AZUL = "─────| TIME AZUL |─────"
 ROTULO_TIME_VERMELHO = "─────| TIME VERMELHO |─────"
+
+DESCRICAO_JOGADORES = "10 nomes únicos separados por vírgula. Se omitido, abre inscrição por reação."

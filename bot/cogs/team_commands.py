@@ -3,7 +3,9 @@ import bot.formatting as formatting
 import bot.signup as signup
 import bot.views as views
 
+from discord import app_commands
 from discord.ext import commands
+from bot.constants import DESCRICAO_JOGADORES
 from bot.exceptions import ValidacaoError
 
 class TeamCommands(commands.Cog):
@@ -15,6 +17,7 @@ class TeamCommands(commands.Cog):
         aliases=["registrarTimeLane"],
         description="Sorteia dois times e as lanes de cada jogador",
     )
+    @app_commands.describe(jogadores=DESCRICAO_JOGADORES)
     async def registrar_time_lane(self, ctx, jogadores: str = None):
         await self._registrar(
             ctx,
@@ -29,6 +32,7 @@ class TeamCommands(commands.Cog):
         aliases=["registrarTime"],
         description="Sorteia dois times aleatórios",
     )
+    @app_commands.describe(jogadores=DESCRICAO_JOGADORES)
     async def registrar_time(self, ctx, jogadores: str = None):
         await self._registrar(
             ctx,
